@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Learning hierarchical active basis template</title>
+<link rel="stylesheet" href="http://www.stat.ucla.edu/~zzsi/plain_and_simple.css" type="text/css" media="screen" />
+<script type="text/javascript" src="http://www.stat.ucla.edu/~zzsi/1.js"></script>
+</head>
+<body>
+<div id="header">
+<h1>Weakly supervised learning of hierarhical active basis</h1></div>
+
+<div id="content">
+
+<p><a href="http://www.stat.ucla.edu/~zzsi/hab.html">Project home</a></p>
+<div id="content">
+<div id="TableOfContents">
+<p>Contents</p>
+<ul>
+<li>
+<A href="#download">Download</A>
+</li>
+<li>
+<a href="#traindata">Training examples</a>
+</li>
+<li>
+<a href="#parts">Learned partial templates</a>
+</li>
+<li>
+<a href="#matched">Shape matching by hierarchical active basis</a>
+</li>
+</ul>
+</div>
+<div style="border-bottom:1 solid #dddddd; margin-top:0.3em;"></div>
+<a name="download"></a> <table cellspacing="10" cellpadding="10" class="center" width="60%">
+
+<tr><td>
+
+<b>Code and data: (<a href="HABMorph_Egret_20110214.zip">ZIP</a>).</b>
+
+</td>
+
+<td>
+
+<a href="http://www.stat.ucla.edu/~zzsi/HAB/hab_changelog.html">Change Log</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td colspan=2 align=left>
+
+Run StartFromHere.m in matlab to learn the hierarchical active basis template. Run GenerateHtml.m to generate this webpage.
+
+</td>
+
+</tr>
+
+</table>
+<div style="border-top:1 solid #dddddd; margin-top:0.3em;"></div><h2> <a name="traindata"></a>Training examples </h2>
+<p>We learn a 2-level hierarchical active basis template from images with articulated objects with unknown scale, rotation and translation. The object template size is 144 * 144 pixels; the part template size is 72 * 72 pixels. Each part may translate and rotate locally relative to the object center. And each edge element can translate and rotate locally relative to the part center. We use EM-type algorithm to obtain the part and object templates as well as the hierarchical deformation on each image. Number of EM iterations = 25.  Each part is an active basis model of Gabor elements with local shift <= 3 pixels, and orientation shift <= 1 * PI/16.  In total, there are 50 Gabor elements in the object template.  </p>
+
+<p><img src="HABMorph_Egret_files/l1.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l10.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l11.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l13.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l14.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l15.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l16.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l17.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l18.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l19.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l2.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l20.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l22.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l24.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l25.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l26.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l27.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l28.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l29.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l3.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l30.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l31.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l32.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l33.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l4.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l5.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l8.jpg" alt="" height=80/><img src="HABMorph_Egret_files/l9.jpg" alt="" height=80/>
+</p>
+
+<h3> Learning from example 1</h3>
+
+<p> The template is initialized from the following example image. </p>
+<p><img src="HABMorph_Egret_files/l1.jpg" alt="" height = 100 />
+</p> <p></p>
+<div style="border-bottom:1 solid #dddddd; margin-top:0.3em;"></div>
+ <h2>Learned object template</h2> <a name="parts"></a>
+<img src="HABMorph_Egret_files/template_iter24.png" alt="" height=144/>
+<br /><div style="border-top:1 solid #dddddd; margin-top:0.3em;"></div>
+<a name="matched"></a>
+ <h2>Shape matching by Hierarchical Active Basis</h2> 
+ <p> A hierarchical active basis (HAB) template is composed of a small number of partial templates which can translate and rotate locally relative to other partial templates.The following pairs of images show the matched HAB templates on example images. </p>
+
+<p>
+<p><img src="HABMorph_Egret_files/matchedS3image1.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T1_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image2.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T2_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image3.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T3_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image4.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T4_iter25.png" alt="" height=120/>
+<br />
+<img src="HABMorph_Egret_files/matchedS3image5.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T5_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image6.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T6_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image7.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T7_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image8.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T8_iter25.png" alt="" height=120/>
+<br />
+<img src="HABMorph_Egret_files/matchedS3image9.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T9_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image10.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T10_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image11.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T11_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image12.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T12_iter25.png" alt="" height=120/>
+<br />
+<img src="HABMorph_Egret_files/matchedS3image13.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T13_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image14.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T14_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image15.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T15_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image16.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T16_iter25.png" alt="" height=120/>
+<br />
+<img src="HABMorph_Egret_files/matchedS3image17.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T17_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image18.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T18_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image19.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T19_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image20.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T20_iter25.png" alt="" height=120/>
+<br />
+<img src="HABMorph_Egret_files/matchedS3image21.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T21_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image22.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T22_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image23.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T23_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image24.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T24_iter25.png" alt="" height=120/>
+<br />
+<img src="HABMorph_Egret_files/matchedS3image25.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T25_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image26.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T26_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image27.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T27_iter25.png" alt="" height=120/>
+<img src="HABMorph_Egret_files/matchedS3image28.png" alt="" height=120/><img src="HABMorph_Egret_files/matchedS3T28_iter25.png" alt="" height=120/>
+<br />
+
+</p>
+
+
+
+</div> 
+<div id="last" class="footer"></div></body> </html> 
