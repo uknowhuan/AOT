@@ -23,12 +23,12 @@ starty = 1; endy = starty + sizeTemplatey - 1;
 % to be frequently adjusted:
 numIteration = 30;  % number of iterations
 partRotationRange = 2*(-2:2); % absolute part rotation (rotation of partial templates)  部分
-numPartRotate = length(partRotationRange);
+numPartRotate = length(partRotationRange);   %mark
 maxPartRelativeRotation = 2;
 resolutionShiftLimit = 1;
 minRotationDif = (sin(maxPartRelativeRotation*pi/numOrient)-sin(0))^2 + (cos(maxPartRelativeRotation*pi/numOrient)-cos(0))^2 + 1e-10;
 rotationRange = 2*(-1:1); % whole object rotation   整体
-numRotate = length(rotationRange);
+numRotate = length(rotationRange);    %整体
 
 % to be occationally adjusted
 numElement = 50; % number of Gabors in active basis
@@ -44,8 +44,8 @@ epsilon = .1; % allowed correlation between selected Gabors
 subsample = 1; % subsample in computing MAX1 and SUM2 maps
 Correlation = CorrFilter(allFilter, epsilon); % correlation between filters
 
-PartLocX0 = 1:partSizeX:templateSize(1)-partSizeX+1;  %数组
-PartLocY0 = 1:partSizeY:templateSize(2)-partSizeY+1;
+PartLocX0 = 1:partSizeX:templateSize(1)-partSizeX+1;    %[1 1+partSizeX]
+PartLocY0 = 1:partSizeY:templateSize(2)-partSizeY+1;    %[1 1+partSizeY]
 partLocRange = floor(sqrt(partSizeX*partSizeY)*locationPerturbFraction);
 numCandPart = length(PartLocX0) * length(PartLocY0);
 PartLocX = zeros(numCandPart,1);

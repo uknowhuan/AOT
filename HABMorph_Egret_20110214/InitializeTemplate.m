@@ -1,7 +1,7 @@
 
 %% Prepare output variables for learning
 
-%% numCandPart初始值？如何确定各par分割线，监督还是非监督学习
+%% 如何确定各part分割线，监督还是非监督学习,data matrix R在这里设置好了吗?
 selectedOrient = cell(numCandPart, 1);  % orientation and location of selected Gabors
 selectedx = cell(numCandPart, 1);
 selectedy = cell(numCandPart, 1);

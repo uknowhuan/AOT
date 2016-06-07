@@ -1,6 +1,7 @@
-patches = cell(numImage,1);
+  %% 输入data matrix R在哪里？？
+patches = cell(numImage,1);  %patches指的是blocks吗？
 
-SUM1mapLearn = cell(numImage,numOrient);
+SUM1mapLearn = cell(numImage,numOrient);        %numOrient初始值？
 for i = 1:numel(SUM1mapLearn)
 	SUM1mapLearn{i} = zeros(sizeTemplatex,sizeTemplatey,'single');
 end
@@ -14,7 +15,7 @@ end
 
 for it = 1:numIteration
 
-	%% Iteration part 1 (E step): detect the object in each image using SUM3 map
+	%% Iteration part 1 (E step): detect the object in each image  using SUM3 map
 
 	disp(['detection for step ' num2str(it)]);
     aveMAX2 = zeros(numCandPart,1); % records the average MAX2 scores for each non-overlapping partial templates
@@ -34,7 +35,7 @@ for it = 1:numIteration
         
         load( sprintf('working/ImageAndFeature_%d.mat',img) );
         
-        selectedPart = find(PartOnOff);
+        selectedPart = find(PartOnOff);  %[1 2 3 4]'
         
         %% compute SUM2 maps for non-overlapping parts
         SUM2map = cell(numPartRotate,numCandPart,numResolution);
@@ -50,7 +51,7 @@ for it = 1:numIteration
             end
         end
         
-        for iRes = 1:numResolution
+        for iRes = 1:numResolution   %numResolution=4
             tmpS2 = mexc_ComputeSUM2( numOrient,...
                 MAX1map(iRes,:), S2T(:), subsampleS2 );
             SUM2map(:,:,iRes) = reshape(tmpS2,[numPartRotate numCandPart]);
@@ -79,7 +80,7 @@ for it = 1:numIteration
         % compute MAX2 maps for overlapping parts (local maximization w.r.t. translation and rotation)
         templateAffinityMatrix = cell(numPartRotate,numCandPart);
         for iPart = 1:numCandPart
-            for r1 = 1:length(partRotationRange)
+            for r1 = 1:length(partRotationRange)    %1:numPartRotate
                 angle1 = pi/numOrient * partRotationRange(r1);
                 templateAffinityMatrix{r1,iPart} = [];
                 jPart = iPart;
